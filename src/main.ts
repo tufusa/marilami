@@ -1,5 +1,5 @@
 import fs from "fs";
-import { GatewayIntentBits, Client } from "discord.js";
+import { GatewayIntentBits, Client, Channel, TextChannel } from "discord.js";
 import dotenv from "dotenv";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -31,15 +31,32 @@ client.once("ready", () => {
     const nowDay = now.startOf("day");
     const doomsday = dayjs(data.doomsday);
     const leftDays = doomsday.diff(nowDay, "day");
+    const timestamp = `[${now.format("YYYY-MM-DDTHH:mm:ss")}]`;
 
     const nickname = `${leftDays}日後に${data.action}${data.name}`;
 
-    console.log(
-      `[${now.format("YYYY-MM-DDTHH:mm:ss")}] Change nickname: ${nickname}`
-    );
-    client.guilds.cache
-      .get(process.env.GUILD_ID)
-      ?.members.me?.setNickname(nickname);
+    const guild = client.guilds.cache.get(process.env.GUILD_ID);
+    if (!guild) {
+      console.log(`${timestamp} Error: Guild not found`);
+      return;
+    }
+
+    const channel = client.channels.cache.get(process.env.CHANNEL_ID);
+    if (!channel) {
+      console.log(`${timestamp} Error: Channel not found`);
+      return;
+    }
+    if (!("send" in channel)) {
+      console.log(`${timestamp} Error: Cannot send at this channel`);
+      return;
+    }
+
+    guild.members.me?.setNickname(nickname);
+    console.log(`${timestamp} Change nickname: ${nickname}`);
+
+    const message = `${data.name}が${data.action}まであと${leftDays}日です`;
+    channel.send(message);
+    console.log(`${timestamp} Send message: ${message}`);
   });
 });
 
