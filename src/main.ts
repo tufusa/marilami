@@ -23,7 +23,7 @@ const client = new Client({
 client.once("ready", () => {
   console.log(`Ready: ${client.user?.tag}`);
 
-  cron.schedule("0 * * * * *", () => {
+  cron.schedule("0 0 0 * * *", () => {
     const yamlText = fs.readFileSync(process.env.DATA_PATH, "utf8");
     const data = yaml.load(yamlText) as Data;
 
