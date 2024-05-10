@@ -1,5 +1,5 @@
 import fs from "fs";
-import { GatewayIntentBits, Client, Channel, TextChannel } from "discord.js";
+import { GatewayIntentBits, Client } from "discord.js";
 import dotenv from "dotenv";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
