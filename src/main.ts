@@ -23,7 +23,7 @@ const client = new Client({
 client.once("ready", () => {
   console.log(`Ready: ${client.user?.tag}`);
 
-  cron.schedule("0 0 0 * * *", () => {
+  cron.schedule("0 0 0 * * *", async () => {
     const yamlText = fs.readFileSync(process.env.DATA_PATH, "utf8");
     const data = yaml.load(yamlText) as Data;
 
@@ -51,11 +51,11 @@ client.once("ready", () => {
       return;
     }
 
-    guild.members.me?.setNickname(nickname);
+    await guild.members.me?.setNickname(nickname);
     console.log(`${timestamp} Change nickname: ${nickname}`);
 
     const message = `${data.name}が${data.action}まであと${leftDays}日です`;
-    channel.send(message);
+    await channel.send(message);
     console.log(`${timestamp} Send message: ${message}`);
   });
 });
