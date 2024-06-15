@@ -6,7 +6,8 @@
     "dev": "bun run src/main.ts",
     "start": "bun run build/main.js",
     "build": "bun build src/main.ts --outdir build --target bun",
-    "lint": "bun x eslint"
+    "lint": "bun x eslint",
+    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\""
   },
   "keywords": [],
   "author": "",
