@@ -1,5 +1,5 @@
 import fs from "fs";
-import { GatewayIntentBits, Client } from "discord.js";
+import { GatewayIntentBits, Client, Message } from "discord.js";
 import dotenv from "dotenv";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -17,7 +17,12 @@ dayjs.extend(timezone);
 
 // discord.jsクライアント
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds],
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent,
+  ],
 });
 
 client.once("ready", () => {
@@ -58,6 +63,15 @@ client.once("ready", () => {
     await channel.send(message);
     console.log(`${timestamp} Send message: ${message}`);
   });
+});
+
+client.on("messageCreate", (message: Message) => {
+  if(message.author.bot) return;
+
+  if(message.content.includes("結婚")) {
+    console.log("結婚");
+    message.channel.send("🦀「えっもう結婚するの！？」");
+  }
 });
 
 client.login(process.env.TOKEN);
