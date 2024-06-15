@@ -6,7 +6,8 @@
     "dev": "bun run src/main.ts",
     "start": "bun run build/main.js",
     "build": "bun build src/main.ts --outdir build --target bun",
-    "lint": "bun x eslint"
+    "lint": "bun x eslint",
+    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\""
   },
   "keywords": [],
   "author": "",
@@ -17,13 +18,13 @@
   },
   "dependencies": {
     "dayjs": "^1.11.11",
-    "discord.js": "^14.14.1",
+    "discord.js": "^14.15.3",
     "dotenv": "^16.4.5",
-    "eslint": "^9.2.0",
-    "globals": "^15.2.0",
+    "eslint": "^9.5.0",
+    "globals": "^15.4.0",
     "js-yaml": "^4.1.0",
     "node-cron": "^3.0.3",
-    "prettier": "^3.2.5",
-    "typescript-eslint": "^7.8.0"
+    "prettier": "^3.3.2",
+    "typescript-eslint": "^7.13.0"
   }
 }

@@ -66,9 +66,9 @@ client.once("ready", () => {
 });
 
 client.on("messageCreate", (message: Message) => {
-  if(message.author.bot) return;
+  if (message.author.bot) return;
 
-  if(message.content.includes("結婚")) {
+  if (message.content.includes("結婚")) {
     console.log("結婚");
     message.channel.send("🦀「えっもう結婚するの！？」");
   }
