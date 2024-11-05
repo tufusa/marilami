@@ -6,8 +6,9 @@
     "dev": "bun run src/main.ts",
     "start": "bun run build/main.js",
     "build": "bun build src/main.ts --outdir build --target bun",
-    "lint": "bun x eslint",
-    "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,md}\""
+    "lint": "bun x biome lint --write",
+    "format": "bun x biome format --write",
+    "check": "bun x biome check --write"
   },
   "keywords": [],
   "author": "",
