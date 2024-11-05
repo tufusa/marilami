@@ -25,6 +25,6 @@
     "globals": "^15.4.0",
     "js-yaml": "^4.1.0",
     "node-cron": "^3.0.3",
-    "typescript-eslint": "^7.13.0"
+    "typescript-eslint": "^8.0.0"
   }
 }
