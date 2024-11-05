@@ -1,12 +1,12 @@
-import fs from "fs";
-import { GatewayIntentBits, Client, Message } from "discord.js";
-import dotenv from "dotenv";
+import fs from "node:fs";
 import dayjs from "dayjs";
-import utc from "dayjs/plugin/utc";
 import timezone from "dayjs/plugin/timezone";
-import cron from "node-cron";
+import utc from "dayjs/plugin/utc";
+import { Client, GatewayIntentBits, type Message } from "discord.js";
+import dotenv from "dotenv";
 import yaml from "js-yaml";
-import { Data } from "./@types/data";
+import cron from "node-cron";
+import type { Data } from "./@types/data";
 
 // dotenv初期化
 dotenv.config();
@@ -68,6 +68,10 @@ client.once("ready", () => {
 client.on("messageCreate", (message: Message) => {
   if (message.author.bot) return;
 
+  if (!("send" in message.channel)) {
+    console.log("Error: Cannot send at this channel");
+    return;
+  }
   if (message.content.includes("結婚")) {
     console.log("結婚");
     message.channel.send("🦀「えっもう結婚するの！？」");
