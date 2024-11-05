@@ -17,14 +17,13 @@
     "@types/node-cron": "^3.0.11"
   },
   "dependencies": {
+    "@biomejs/biome": "^1.9.4",
     "dayjs": "^1.11.11",
     "discord.js": "^14.15.3",
     "dotenv": "^16.4.5",
-    "eslint": "^9.5.0",
     "globals": "^15.4.0",
     "js-yaml": "^4.1.0",
     "node-cron": "^3.0.3",
-    "prettier": "^3.3.2",
     "typescript-eslint": "^7.13.0"
   }
 }
