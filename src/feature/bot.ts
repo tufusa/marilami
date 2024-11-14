@@ -1,10 +1,6 @@
 import { Client } from "@poporonnet/discord-pure";
-import dotenv from "dotenv";
 import { getDate, getNow } from "./dayjs";
 import { log } from "./log";
-
-// dotenv初期化
-dotenv.config();
 
 const client = new Client(process.env.TOKEN);
 
