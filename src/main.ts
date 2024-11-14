@@ -65,17 +65,4 @@ client.once("ready", () => {
   });
 });
 
-client.on("messageCreate", (message: Message) => {
-  if (message.author.bot) return;
-
-  if (!("send" in message.channel)) {
-    console.log("Error: Cannot send at this channel");
-    return;
-  }
-  if (message.content.includes("結婚")) {
-    console.log("結婚");
-    message.channel.send("🦀「えっもう結婚するの！？」");
-  }
-});
-
 client.login(process.env.TOKEN);
