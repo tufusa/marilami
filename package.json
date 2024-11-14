@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "bun run src/main.ts",
-    "start": "bun run build/main.js",
-    "build": "bun build src/main.ts --outdir build --target bun",
+    "dev": "wrangler dev src/main.ts --test-scheduled",
+    "deploy": "wrangler deploy src/main.ts --minify --keep-vars",
     "lint": "bun x biome lint --write",
     "format": "bun x biome format --write",
     "check": "bun x biome check --write"
@@ -15,12 +14,12 @@
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@types/node-cron": "3.0.11"
+    "@cloudflare/workers-types": "^4.20241112.0",
+    "wrangler": "^3.86.1"
   },
   "dependencies": {
     "@poporonnet/discord-pure": "0.3.0",
-    "dayjs": "1.11.13",
-    "node-cron": "3.0.3"
+    "dayjs": "1.11.13"
   },
   "packageManager": "bun@1.1.34"
 }
