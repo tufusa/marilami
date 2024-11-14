@@ -1,19 +1,11 @@
 {
-  "include": [
-    "**/*.ts"
-  ],
-  "files": [
-    "src/global.d.ts"
-  ],
+  "include": ["**/*.ts"],
+  "files": ["src/global.d.ts"],
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
-    "lib": [
-      "ESNext"
-    ],
-    "types": [
-      "@cloudflare/workers-types"
-    ],
+    "lib": ["ESNext"],
+    "types": ["@cloudflare/workers-types"],
     "allowJs": false,
     "outDir": "./build",
     "moduleResolution": "bundler",
