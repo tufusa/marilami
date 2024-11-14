@@ -1,24 +1,26 @@
 import { Client } from "@poporonnet/discord-pure";
+import type { Env } from "../main";
 import { getDate, getNow } from "./dayjs";
 import { log } from "./log";
 
-const client = new Client(process.env.TOKEN);
+export const update = async (env: Env) => {
+  const client = new Client(env.TOKEN);
 
-const doomsday = getDate(process.env.DOOMSDAY);
-
-export const update = async () => {
   const nowDay = getNow().startOf("day");
+  const doomsday = getDate(env.DOOMSDAY);
   const leftDays = doomsday.diff(nowDay, "day");
 
-  const nickname = `${leftDays}日後に${process.env.ACTION}${process.env.NAME}`;
-  client.guild
-    .modifyCurrentMember(process.env.GUILD_ID, {
+  const nickname = `${leftDays}日後に${env.ACTION}${env.NAME}`;
+  const changeNickname = client.guild
+    .modifyCurrentMember(env.GUILD_ID, {
       nick: nickname,
     })
     .then(() => log(`Change nickname: ${nickname}`));
 
-  const message = `${process.env.NAME}が${process.env.ACTION}まであと${leftDays}日です`;
-  client.message
-    .create(process.env.CHANNEL_ID, { content: message })
+  const message = `${env.NAME}が${env.ACTION}まであと${leftDays}日です`;
+  const createMessage = client.message
+    .create(env.CHANNEL_ID, { content: message })
     .then(() => log(`Send message: ${message}`));
+
+  return Promise.all([changeNickname, createMessage]);
 };
