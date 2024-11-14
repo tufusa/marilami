@@ -15,7 +15,6 @@ export const update = async () => {
   const leftDays = doomsday.diff(nowDay, "day");
 
   const nickname = `${leftDays}日後に${process.env.ACTION}${process.env.NAME}`;
-
   client.guild
     .modifyCurrentMember(process.env.GUILD_ID, {
       nick: nickname,
