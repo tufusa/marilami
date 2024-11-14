@@ -22,5 +22,5 @@
     "dayjs": "1.11.11",
     "node-cron": "3.0.3"
   },
-  "packageManager": "bun@1.1.13"
+  "packageManager": "bun@1.1.34"
 }
