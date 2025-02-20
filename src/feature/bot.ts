@@ -19,6 +19,7 @@ export const update = async (env: Env): Promise<void> => {
     .then(() => log(`Change nickname: ${nickname}`));
 
   const message =
+    `### ${env.NAME}が${env.ACTION}まであと${leftDays}日です\n` +
     `- ${primeMessage(leftDays)}\n` +
     `- ${fortuneMessage(env)}`;
   const createMessage = client.message

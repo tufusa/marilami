@@ -11,6 +11,8 @@ export const primeMessage = (leftDays: number): string => {
     return `${dayDiff}は素数です！`;
   }
 
-  const expression = factors.map(([base, exp]) => `${base}^${exp}`).join(" x ");
-  return `${dayDiff}は\`${expression}\`です`;
+  const expression = factors
+    .map(([base, exp]) => `${base}${exp === 1 ? "" : `^${exp}`}`)
+    .join(" x ");
+  return `${dayDiff}は\`${expression}\`です。`;
 };
