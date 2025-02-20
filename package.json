@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@poporonnet/discord-pure": "0.4.0",
+    "cron-parser": "5.0.2",
     "dayjs": "1.11.13"
   },
   "packageManager": "bun@1.1.34"
