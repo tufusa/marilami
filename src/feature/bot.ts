@@ -1,5 +1,6 @@
 import { Client } from "@poporonnet/discord-pure";
 import { getDate, getNow } from "./dayjs";
+import { fortuneMessage } from "./fortuneMessage";
 import { log } from "./log";
 import { primeMessage } from "./primeMessage";
 
@@ -18,8 +19,8 @@ export const update = async (env: Env): Promise<void> => {
     .then(() => log(`Change nickname: ${nickname}`));
 
   const message =
-    `${env.NAME}が${env.ACTION}まであと${leftDays}日です\n` +
-    `- ${primeMessage(leftDays)}`;
+    `- ${primeMessage(leftDays)}\n` +
+    `- ${fortuneMessage(env)}`;
   const createMessage = client.message
     .create(env.CHANNEL_ID, { content: message })
     .then(() => log(`Send message: ${message}`));
