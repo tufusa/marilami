@@ -1,9 +1,8 @@
 import { Client } from "@poporonnet/discord-pure";
-import type { Env } from "../main";
 import { getDate, getNow } from "./dayjs";
 import { log } from "./log";
 
-export const update = async (env: Env) => {
+export const update = async (env: Env): Promise<void> => {
   const client = new Client(env.TOKEN);
 
   const nowDay = getNow().startOf("day");
@@ -22,5 +21,5 @@ export const update = async (env: Env) => {
     .create(env.CHANNEL_ID, { content: message })
     .then(() => log(`Send message: ${message}`));
 
-  return Promise.all([changeNickname, createMessage]);
+  await Promise.all([changeNickname, createMessage]);
 };

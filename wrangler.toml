@@ -1,2 +1,16 @@
 name = "marilami"
 compatibility_date = "2024-11-14"
+
+# Main cron
+vars = { CRON = "0 15 * * *" }
+
+[observability]
+enabled = true
+
+# Maintenance cron
+[triggers]
+crons = ["0 3 * * *"]
+
+[[durable_objects.bindings]]
+class_name = "Clock"
+name = "CLOCK"

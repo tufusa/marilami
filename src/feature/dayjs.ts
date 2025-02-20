@@ -8,4 +8,4 @@ dayjs.extend(timezone);
 
 export const getNow = () => dayjs().tz("Asia/Tokyo");
 
-export const getDate = dayjs;
+export const getDate = (date: dayjs.ConfigType) => dayjs(date).tz("Asia/Tokyo");
