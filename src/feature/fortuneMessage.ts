@@ -1,7 +1,4 @@
-export const fortuneMessage = (env: Env) => {
-  const name = env.NAME;
-  const action = env.ACTION;
-
+export const fortuneMessage = (name: string, action: string): string => {
   const choices = [
     "は転びます。",
     "に型をつけるなら……`Map<number, string>`です。",

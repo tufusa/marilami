@@ -5,11 +5,9 @@ interface Env {
   CHANNEL_ID: string;
   NAME: string;
   ACTION: string;
+  ACTION_EUPHONIC_TE: string;
   DOOMSDAY: string;
 
   // Public vars
   CRON: string;
-
-  // Bindings
-  CLOCK: DurableObjectNamespace<import("./src/main").Clock>;
 }
