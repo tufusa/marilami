@@ -9,9 +9,10 @@ export const niceRoundDayMessage = (
 
   if (leftDays % 100 !== 0) return;
 
-  if (isPast) {
-    return `**${name}が${actionEuphonicTe}から今日でちょうど${dayDiff}日です**:zap:`;
+  if (dayDiff === 0) {
+    return `**${name}が${action}のは今日です**:exclamation::exclamation::exclamation::exclamation:`;
   }
-
-  return `**${name}が${action}まであとちょうど${dayDiff}日です**:zap:`;
+  return isPast
+    ? `**${name}が${actionEuphonicTe}から今日でちょうど${dayDiff}日です**:zap:`
+    : `**${name}が${action}まであとちょうど${dayDiff}日です**:zap:`;
 };
