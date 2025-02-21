@@ -3,21 +3,12 @@ import { log } from "./feature/log";
 
 log("Marilami is up");
 
-export interface Env {
-  TOKEN: string;
-  GUILD_ID: string;
-  CHANNEL_ID: string;
-  NAME: string;
-  ACTION: string;
-  DOOMSDAY: string;
-}
-
 const handler: ExportedHandler<Env> = {
-  fetch: async () => {
+  fetch: async (_controller) => {
     return new Response("Marilami is up.");
   },
-  scheduled: (_controller, env, ctx) => {
-    return ctx.waitUntil(update(env));
+  scheduled: async (_controller, env, ctx) => {
+    ctx.waitUntil(update(env));
   },
 };
 

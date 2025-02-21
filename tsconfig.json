@@ -1,6 +1,6 @@
 {
   "include": ["**/*.ts"],
-  "files": ["src/global.d.ts"],
+  "files": ["worker-configuration.d.ts"],
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
