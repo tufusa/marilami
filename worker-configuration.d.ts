@@ -9,7 +9,4 @@ interface Env {
 
   // Public vars
   CRON: string;
-
-  // Bindings
-  CLOCK: DurableObjectNamespace<import("./src/main").Clock>;
 }
