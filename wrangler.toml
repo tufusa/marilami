@@ -2,15 +2,23 @@ name = "marilami"
 compatibility_date = "2024-11-14"
 
 # Main cron
-vars = { CRON = "0 15 * * *" }
+[vars]
+CRON = "0 15 * * *"
 
 [observability]
 enabled = true
 
 # Maintenance cron
 [triggers]
-crons = ["0 3 * * *"]
+crons = ["0 15 * * *"]
 
-[[durable_objects.bindings]]
-class_name = "Clock"
-name = "CLOCK"
+[env.develop]
+name = "marilami-develop"
+vars = { CRON = "* * * * *" }
+triggers = { crons = ["* * * * *"] }
+
+[env.staging]
+name = "marilami-staging"
+workers_dev = true
+vars = { CRON = "0 15 * * *" }
+triggers.crons = ["0 15 * * *"]
