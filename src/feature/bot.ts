@@ -1,6 +1,5 @@
 import { Client } from "@poporonnet/discord-pure";
 import { getDate, getNow } from "./dayjs";
-import { delay } from "./delay";
 import { fortuneMessage } from "./fortuneMessage";
 import { log } from "./log";
 import { niceRoundDateMessage } from "./niceRoundDateMessage";
@@ -13,8 +12,6 @@ export const update = async (env: Env): Promise<void> => {
   const nowDay = getNow().startOf("day");
   const doomsday = getDate(env.DOOMSDAY).startOf("day");
   const leftDays = doomsday.diff(nowDay, "day");
-
-  await delay(env);
 
   const nickname = `${leftDays}日後に${env.ACTION}${env.NAME}`;
   const changeNickname = client.guild

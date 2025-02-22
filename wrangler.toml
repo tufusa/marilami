@@ -5,13 +5,14 @@ main = "src/main.ts"
 # Main cron
 [vars]
 CRON = "0 15 * * *"
+MAX_DELAY_MS = 25_000
 
 [observability]
 enabled = true
 
-# Maintenance cron
+# Pre cron
 [triggers]
-crons = ["0 15 * * *"]
+crons = ["59 14 * * *"]
 
 [[services]]
 binding = "SELF"
@@ -22,13 +23,13 @@ mode = "smart"
 
 [env.develop]
 name = "marilami-develop"
-vars = { CRON = "* * * * *" }
+vars = { CRON = "* * * * *", MAX_DELAY_MS = 25_000 }
 triggers = { crons = ["* * * * *"] }
 services = [{ binding = "SELF", service = "marilami-develop" }]
 
 [env.staging]
 name = "marilami-staging"
 workers_dev = true
-vars = { CRON = "0 15 * * *" }
-triggers.crons = ["0 15 * * *"]
+vars = { CRON = "0 15 * * *", MAX_DELAY_MS = 25_000 }
+triggers.crons = ["59 14 * * *"]
 services = [{ binding = "SELF", service = "marilami-staging" }]

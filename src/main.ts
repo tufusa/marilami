@@ -1,15 +1,19 @@
-import { update } from "./feature/bot";
+import { WorkerEntrypoint } from "cloudflare:workers";
 import { log } from "./feature/log";
+import { updateOrDelay } from "./feature/updateOrDelay";
 
 log("Marilami is up");
 
-const handler: ExportedHandler<Env> = {
-  fetch: async (_controller) => {
+export default class extends WorkerEntrypoint<Env> {
+  fetch() {
     return new Response("Marilami is up.");
-  },
-  scheduled: async (_controller, env, ctx) => {
-    ctx.waitUntil(update(env));
-  },
-};
+  }
 
-export default handler;
+  scheduled() {
+    this.ctx.waitUntil(updateOrDelay(this.env));
+  }
+
+  updateOrDelay() {
+    this.ctx.waitUntil(updateOrDelay(this.env));
+  }
+}
