@@ -1,24 +1,19 @@
-import { update } from "./feature/bot";
+import { WorkerEntrypoint } from "cloudflare:workers";
 import { log } from "./feature/log";
+import { updateOrDelay } from "./feature/updateOrDelay";
 
 log("Marilami is up");
 
-export interface Env {
-  TOKEN: string;
-  GUILD_ID: string;
-  CHANNEL_ID: string;
-  NAME: string;
-  ACTION: string;
-  DOOMSDAY: string;
-}
-
-const handler: ExportedHandler<Env> = {
-  fetch: async () => {
+export default class extends WorkerEntrypoint<Env> {
+  fetch() {
     return new Response("Marilami is up.");
-  },
-  scheduled: (_controller, env, ctx) => {
-    return ctx.waitUntil(update(env));
-  },
-};
+  }
 
-export default handler;
+  scheduled() {
+    this.ctx.waitUntil(updateOrDelay(this.env));
+  }
+
+  updateOrDelay() {
+    this.ctx.waitUntil(updateOrDelay(this.env));
+  }
+}

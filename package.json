@@ -1,16 +1,17 @@
 {
   "name": "marilami",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
   "scripts": {
-    "dev": "wrangler dev src/main.ts --test-scheduled",
-    "deploy": "wrangler deploy src/main.ts --minify --keep-vars",
+    "dev": "wrangler dev --env develop --test-scheduled -c wrangler.toml -c wrangler.toml",
+    "deploy": "wrangler deploy --minify --keep-vars",
+    "stage": "wrangler deploy --env staging --minify --keep-vars",
     "lint": "bun x biome lint --write",
     "format": "bun x biome format --write",
     "check": "bun x biome check --write"
   },
   "keywords": [],
-  "author": "",
+  "author": "tufusa",
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
@@ -19,7 +20,8 @@
   },
   "dependencies": {
     "@poporonnet/discord-pure": "0.4.0",
+    "cron-parser": "5.0.2",
     "dayjs": "1.11.13"
   },
-  "packageManager": "bun@1.1.34"
+  "packageManager": "bun@1.2.3"
 }

@@ -1,2 +1,35 @@
 name = "marilami"
 compatibility_date = "2024-11-14"
+main = "src/main.ts"
+
+# Main cron
+[vars]
+CRON = "0 15 * * *"
+MAX_DELAY_MS = 25_000
+
+[observability]
+enabled = true
+
+# Pre cron
+[triggers]
+crons = ["59 14 * * *"]
+
+[[services]]
+binding = "SELF"
+service = "marilami"
+
+[placement]
+mode = "smart"
+
+[env.develop]
+name = "marilami-develop"
+vars = { CRON = "* * * * *", MAX_DELAY_MS = 25_000 }
+triggers = { crons = ["* * * * *"] }
+services = [{ binding = "SELF", service = "marilami-develop" }]
+
+[env.staging]
+name = "marilami-staging"
+workers_dev = true
+vars = { CRON = "0 15 * * *", MAX_DELAY_MS = 25_000 }
+triggers.crons = ["59 14 * * *"]
+services = [{ binding = "SELF", service = "marilami-staging" }]
