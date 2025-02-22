@@ -10,4 +10,8 @@ interface Env {
 
   // Public vars
   CRON: string;
+  MAX_DELAY_MS: number;
+
+  // Bindings
+  SELF: Service<import("./src/main").default>;
 }
