@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "wrangler dev src/main.ts --env develop --test-scheduled",
-    "deploy": "wrangler deploy src/main.ts --minify --keep-vars",
-    "stage": "wrangler deploy src/main.ts --env staging --minify --keep-vars",
+    "dev": "wrangler dev --env develop --test-scheduled -c wrangler.toml -c wrangler.toml",
+    "deploy": "wrangler deploy --minify --keep-vars",
+    "stage": "wrangler deploy --env staging --minify --keep-vars",
     "lint": "bun x biome lint --write",
     "format": "bun x biome format --write",
     "check": "bun x biome check --write"

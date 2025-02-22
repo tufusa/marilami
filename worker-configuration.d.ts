@@ -10,4 +10,7 @@ interface Env {
 
   // Public vars
   CRON: string;
+
+  // Bindings
+  SELF: Service<import("./src/main").default>;
 }
