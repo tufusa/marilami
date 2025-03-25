@@ -15,11 +15,7 @@ export const primeFactorize = (value: number): Factors => {
     if (count > 0) factors.push([p, count]);
   }
 
-  for (
-    let i = 0, count = 0, d = 7;
-    d * d <= x;
-    d += inc[i++], i %= incLen, count = 0
-  ) {
+  for (let i = 0, count = 0, d = 7; d * d <= x; d += inc[i++], i %= incLen, count = 0) {
     for (; x >= d && x % d === 0; count++, x /= d);
     if (count > 0) factors.push([d, count]);
   }

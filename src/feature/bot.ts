@@ -24,13 +24,7 @@ export const update = async (env: Env): Promise<void> => {
     primeMessage(leftDays),
     fortuneMessage(env.NAME, env.ACTION),
     niceRoundDayMessage(env.NAME, env.ACTION, env.ACTION_EUPHONIC_TE, leftDays),
-    niceRoundDateMessage(
-      env.NAME,
-      env.ACTION,
-      env.ACTION_EUPHONIC_TE,
-      nowDay,
-      doomsday
-    ),
+    niceRoundDateMessage(env.NAME, env.ACTION, env.ACTION_EUPHONIC_TE, nowDay, doomsday),
   ]
     .filter((msg) => msg)
     .map((msg) => `- ${msg}`)
