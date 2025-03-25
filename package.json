@@ -6,9 +6,12 @@
     "dev": "wrangler dev --env develop --test-scheduled -c wrangler.toml -c wrangler.toml",
     "deploy": "wrangler deploy --minify --keep-vars",
     "stage": "wrangler deploy --env staging --minify --keep-vars",
-    "lint": "bun x biome lint --write",
-    "format": "bun x biome format --write",
-    "check": "bun x biome check --write"
+    "lint": "biome lint --write",
+    "format": "biome format --write",
+    "check": "biome check --write",
+    "typecheck": "tsc --noEmit",
+    "check:ci": "biome ci .",
+    "build:ci": "wrangler deploy --dry-run --minify"
   },
   "keywords": [],
   "author": "tufusa",
