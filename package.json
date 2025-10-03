@@ -19,7 +19,7 @@
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
     "@cloudflare/workers-types": "4.20250927.0",
-    "typescript": "5.9.2",
+    "typescript": "5.9.3",
     "wrangler": "4.40.3"
   },
   "dependencies": {
