@@ -1,6 +1,7 @@
 name = "marilami"
 compatibility_date = "2024-11-14"
 main = "src/main.ts"
+keep_vars = true
 
 # Main cron
 [vars]
