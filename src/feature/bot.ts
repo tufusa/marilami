@@ -18,7 +18,7 @@ export const update = async (env: Env): Promise<void> => {
     .modifyCurrentMember(env.GUILD_ID, {
       nick: nickname,
     })
-    .then(() => log(`Change nickname: ${nickname}`));
+    .finally(() => log(`Change nickname: ${nickname}`));
 
   const subMessage = [
     primeMessage(leftDays),
@@ -32,7 +32,17 @@ export const update = async (env: Env): Promise<void> => {
   const message = `### ${env.NAME}が${env.ACTION}まであと${leftDays}日です\n${subMessage}`;
   const createMessage = client.message
     .create(env.CHANNEL_ID, { content: message })
-    .then(() => log(`Send message: ${message}`));
+    .finally(() => log(`Send message: ${message}`));
 
-  await Promise.all([changeNickname, createMessage]);
+  const [nicknameRes, messageRes] = await Promise.all([changeNickname, createMessage]);
+  if (nicknameRes.isFailure() || messageRes.isFailure()) {
+    const cause: Error[] = [];
+    if (nicknameRes.isFailure()) {
+      cause.push(new Error("Failed to change nickname.", { cause: nicknameRes.error }));
+    }
+    if (messageRes.isFailure()) {
+      cause.push(new Error("Failed to send message.", { cause: messageRes.error }));
+    }
+    throw new Error("Failed to update.", { cause });
+  }
 };
