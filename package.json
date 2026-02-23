@@ -17,7 +17,7 @@
   "author": "tufusa",
   "license": "MIT",
   "devDependencies": {
-    "@biomejs/biome": "2.4.3",
+    "@biomejs/biome": "2.4.4",
     "@cloudflare/workers-types": "4.20260227.0",
     "typescript": "5.9.3",
     "wrangler": "4.67.0"
