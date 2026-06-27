@@ -6,7 +6,7 @@
       "name": "marilami",
       "dependencies": {
         "@poporonnet/discord-pure": "0.5.0",
-        "cron-parser": "5.6.0",
+        "cron-parser": "5.6.1",
         "dayjs": "1.11.21",
       },
       "devDependencies": {
@@ -180,7 +180,7 @@
 
     "cookie": ["cookie@1.0.2", "", {}, "sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA=="],
 
-    "cron-parser": ["cron-parser@5.6.0", "", { "dependencies": { "luxon": "^3.7.2" } }, "sha512-6159NDv4eDOjXYDmMTkvUtaVcIrNZI779ydTMOfDdi9fSjhPqmySx0icCHX2+nOyXgNSw6sFCsgLKxYs/2KPuQ=="],
+    "cron-parser": ["cron-parser@5.6.1", "", { "dependencies": { "luxon": "^3.7.2" } }, "sha512-QBm4o1PwZiuY7KFbVvW7FLC8bozy7YWzv+Fz6KRS7sQghzcbDZCGxr/Bc5b6TQreAoSwuWVP491dIcK0THCX6A=="],
 
     "dayjs": ["dayjs@1.11.21", "", {}, "sha512-98IT+HOahAisibz/yjKbzuOBwYcjJ7BCLPzARyHiyEBmRz4fatF+KPJszEHXsGYjUG234aH/cOjW1wwTbKUZlA=="],
 
