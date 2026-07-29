@@ -18,7 +18,7 @@
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "2.5.5",
-    "@cloudflare/workers-types": "5.20260724.1",
+    "@cloudflare/workers-types": "5.20260726.1",
     "typescript": "7.0.2",
     "wrangler": "4.114.0"
   },
