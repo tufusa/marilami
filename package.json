@@ -27,5 +27,5 @@
     "cron-parser": "5.10.0",
     "dayjs": "1.11.23"
   },
-  "packageManager": "bun@1.2.3"
+  "packageManager": "bun@1.4.0"
 }
