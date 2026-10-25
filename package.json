@@ -20,7 +20,7 @@
     "@biomejs/biome": "2.6.2",
     "@cloudflare/workers-types": "5.20261022.1",
     "typescript": "7.0.2",
-    "wrangler": "4.151.3"
+    "wrangler": "4.152.0"
   },
   "dependencies": {
     "@poporonnet/discord-pure": "0.5.0",
